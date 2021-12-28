@@ -21,6 +21,14 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'image',
+    ];
+
+    protected $rules = [
+        'name' => 'required',
+        'password' => 'required|min:5',
+        'email' => 'required',
+        'image' => 'required',
     ];
 
     /**

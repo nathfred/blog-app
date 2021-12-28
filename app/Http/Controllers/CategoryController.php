@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Category;
+use Illuminate\Support\Str;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\File;
 use App\Http\Requests\StoreCategoryRequest;
 use App\Http\Requests\UpdateCategoryRequest;
 
@@ -27,62 +30,65 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.category.create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \App\Http\Requests\StoreCategoryRequest  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(StoreCategoryRequest $request)
+    public function insert(Request $request)
     {
-        //
+        $request->validate(Category::$rules);
+        $requests = $request->all();
+        $requests['image'] = "";
+        if ($request->hasFile('image')) {
+            $files = Str::random("20") . "-" . $request->image->getClientOriginalName();
+            $request->file('image')->move("file/category/", $files);
+            $requests['image'] = "file/category/" . $files;
+        }
+
+        $cat = Category::create($requests);
+        if ($cat) {
+            return redirect('admin/category')->with('status', 'Berhasil Menambah Data!');
+        }
+
+        return redirect('admin/category')->with('status', 'Gagal Menambah Data!');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Category  $category
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Category $category)
+    public function edit($id)
     {
-        //
+        $data = Category::find($id);
+        return view('admin.category.edit', compact('data'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Category  $category
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Category $category)
+    public function update(Request $request, $id)
     {
-        //
+        $d = Category::find($id);
+        if ($d == NULL) {
+            return redirect('admin/category')->with('status', 'Data Tidak Ditemukan!');
+        }
+
+        $req = $request->all();
+        if ($request->hasFile('image')) {
+            if ($d->image !== NULL) {
+                File::delete($d->image);
+            }
+            $category = Str::random("20") . "-" . $request->image->getClientOriginalName();
+            $request->file('image')->move("file/category/", $category);
+            $req['image'] = "file/category/" . $category;
+        }
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \App\Http\Requests\UpdateCategoryRequest  $request
-     * @param  \App\Models\Category  $category
-     * @return \Illuminate\Http\Response
-     */
-    public function update(UpdateCategoryRequest $request, Category $category)
+    public function delete($id)
     {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Category  $category
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Category $category)
-    {
-        //
+        $data = Category::find($id);
+        if ($data == NULL) {
+            return redirect('admin/category')->with('status', 'Data Tidak Ditemukan!');
+        }
+        if ($data->image !== NULL || $data->image !== "") {
+            File::delete($data->image);
+        }
+        $delete = $data->delete();
+        if ($delete) {
+            return redirect('admin/category')->with('status', 'Berhasil Hapus Category!');
+        }
+        return redirect('admin/category')->with('status', 'Gagal Hapus Category!');
     }
 }
