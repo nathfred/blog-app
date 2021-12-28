@@ -13,9 +13,11 @@ class CategoryController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    // Menampilkan semua data
     public function index()
     {
-        //
+        $data = Category::get();
+        return view('admin.category.index', compact('data'));
     }
 
     /**
