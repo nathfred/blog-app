@@ -20,14 +20,16 @@ class User extends Authenticatable
     protected $fillable = [
         'name',
         'email',
+        'email_verified_at',
+        'remember_token',
         'password',
         'image',
     ];
 
-    protected $rules = [
+    public static $rules = [
         'name' => 'required',
         'password' => 'required|min:5',
-        'email' => 'required',
+        'email' => 'required|unique:users',
         'image' => 'required',
     ];
 

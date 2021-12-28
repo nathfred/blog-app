@@ -1,7 +1,9 @@
 <?php
 
-use App\Http\Controllers\CategoryController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\PostController;
+use App\Http\Controllers\AdminController;
+use App\Http\Controllers\CategoryController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,6 +19,11 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('register', [AdminController::class, 'register']);
+Route::post('register', [AdminController::class, 'postRegister']);
+Route::get('login', [AdminController::class, 'login']);
+Route::post('login', [AdminController::class, 'postLogin']);
 
 Route::middleware('checkAdmin')->group(function () {
     Route::prefix('admin')->group(function () {

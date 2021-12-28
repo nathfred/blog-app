@@ -6,9 +6,9 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Panel Admin</title>
 
-    <link rel="stylesheet" href="{{ asset('css/bootstap.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/bootstap.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('vendors/fontawesome/all.min.css') }}">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    {{-- <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}"> --}}
+    <link rel="stylesheet" href="{{ asset('vendors/fontawesome/css/all.min.css') }}">
 
     @yield('css')
     <style>
@@ -23,7 +23,7 @@
 </head>
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle Navigation">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <a href="{{ url('admin') }}" class="navbar-brand">CMS BLOG</a>
@@ -31,26 +31,26 @@
         <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
             <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
                 <li class="nav-item">
-                    <a href="{{ url('admin') }}">Home</a>
+                    <a href="{{ url('admin') }}" class="nav-link">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a href="{{ url('admin/category') }}">Category</a>
+                    <a href="{{ url('admin/category') }}" class="nav-link">Category</a>
                 </li>
                 <li class="nav-item">
-                    <a href="{{ url('admin/slider') }}">Slider</a>
+                    <a href="{{ url('admin/slider') }}" class="nav-link">Slider</a>
                 </li>
                 <li class="nav-item">
-                    <a href="{{ url('admin/post') }}">Post</a>
+                    <a href="{{ url('admin/post') }}" class="nav-link">Post</a>
                 </li>
                 <li class="nav-item">
-                    <a href="{{ url('admin/mainmenu') }}">Menu</a>
+                    <a href="{{ url('admin/mainmenu') }}" class="nav-link">Menu</a>
                 </li>
                 <li class="nav-item">
-                    <a href="{{ url('admin/message') }}">Message</a>
+                    <a href="{{ url('admin/message') }}" class="nav-link">Message</a>
                 </li>
             </ul>
-            <div class="my-2 my-lg-0">
-                <div class="btn-group btn-group-toggle" data-toggle="button">
+            <div class="d-flex my-2 my-lg-0">
+                <div class="btn-group btn-group-toggle" data-toggle="buttons">
                     <label class="btn btn-secondary active">
                         <a href="{{ url('admin/profile/' . session('admin_id')) }}" class="link-menu">Profile</a>
                     </label>
@@ -59,10 +59,14 @@
                     </label>
                 </div>
             </div>
+            {{-- <form class="d-flex">
+                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-success" type="submit">Search</button>
+            </form> --}}
         </div>
     </nav>
 
-    <div class="container=fluid mt-3">
+    <div class="container-fluid mt-3">
         <div class="jumbotron">
             @yield('content')
         </div>
@@ -74,9 +78,14 @@
         </div>
     </footer>
 
-    <script src="{{ asset('js/bootstrap.min.js') }}"></script>
-    <script src="https://code.jquery.com/jquery-3.6.0.slim.min.js" integrity="sha256-u7e5khyithlIdTpu22PHhENmPcRdFiHRjhAuHcs05RI=" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+
+    {{-- <script src="https://code.jquery.com/jquery-3.6.0.slim.min.js" integrity="sha256-u7e5khyithlIdTpu22PHhENmPcRdFiHRjhAuHcs05RI=" crossorigin="anonymous"></script> --}}
+    {{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script> --}}
+    {{-- <script src="{{ asset('js/bootstrap.min.js') }}"></script> --}}
+    @yield('js')
 
 </body>
 </html>

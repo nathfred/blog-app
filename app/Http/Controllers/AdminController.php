@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Carbon\Carbon;
 use App\Models\User;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
@@ -22,16 +23,29 @@ class AdminController extends Controller
 
     public function postRegister(Request $request)
     {
+        // VALIDASI REQUEST
         $request->validate(User::$rules);
+
+        // ATUR FIELD
         $requests = $request->all();
         $requests['password'] = Hash::make($request->password);
-        $requests['image'] = "";
+        $requests['email_verified_at'] = Carbon::now('GMT+7');
+        $requests['remember_token'] = Str::random(10);
+
+        // IMAGE
+        // $file = $request->image;
+        // $file_name = 'User_Picture_' . $request->email . '.' . $file->getClientOriginalExtension();
+        // $directory = 'file/admin/';
+        // $file->move($directory, $file_name);
+        // $requests['image'] = $file_name;
+
         if ($request->hasFile('image')) {
-            $files = Str::random("20") . "-" . $request->image->getClientOriginalName();
-            $request->file('image')->move('file/admin/', $files);
-            $request['image'] = 'file/admin/' . $files;
+            $files = Str::random("20") . "-" . $request->image->getClientOriginalName(); // FILENAME
+            $request->file('image')->move('file/admin/', $files); // MOVE TO LOCAL DIRECTORY
+            $requests['image'] = 'file/admin/' . $files; // FIELD FOR IMAGE
         }
 
+        // CREATE USER
         $user = User::create($requests);
         if ($user) {
             return redirect('register')->with('status', 'Berhasil Mendaftar!');

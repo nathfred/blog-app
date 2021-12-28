@@ -66,6 +66,7 @@ class CategoryController extends Controller
         }
 
         $req = $request->all();
+
         if ($request->hasFile('image')) {
             if ($d->image !== NULL) {
                 File::delete($d->image);
@@ -74,6 +75,12 @@ class CategoryController extends Controller
             $request->file('image')->move("file/category/", $category);
             $req['image'] = "file/category/" . $category;
         }
+
+        $data = Category::find($id)->update($req);
+        if ($data) {
+            return redirect('admin/category')->with('status', 'Category Berhasil Diubah!');
+        }
+        return redirect('admin/category')->with('status', 'Category Gagal Diubah!');
     }
 
     public function delete($id)

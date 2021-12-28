@@ -2,10 +2,34 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\Category;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Post extends Model
 {
     use HasFactory;
+
+    protected $table = 'posts';
+
+    // protected $fillable = [
+    // ];
+
+    protected $guarded = [
+        'id',
+    ];
+
+    public static $rules = [
+        'title' => 'required|max:100',
+        'thumbnail' => 'required|max:100',
+        'category_id' => 'required|integer',
+        'content' => 'required|string',
+        'is_headline' => 'required|boolean',
+        'status' => 'required|boolean',
+    ];
+
+    public function category()
+    {
+        return $this->hasOne(Category::class);
+    }
 }

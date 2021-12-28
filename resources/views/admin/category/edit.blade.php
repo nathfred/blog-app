@@ -1,4 +1,5 @@
 @extends('admin.app')
+
 @section('content')
     <h3>Edit Category</h3>
     <hr>
@@ -12,12 +13,13 @@
             </ul>
         </div>
         @endif
-        <form action="{{ url('admin/category/edit') }}" method="POST" enctype="multipart/form-data">
+        <form action="{{ url('admin/category/edit/'.$data->id) }}" method="POST" enctype="multipart/form-data">
             @csrf
             <label for="name">Name</label>
-            <input type="text" name="name" value="{{ $data->name }}" id="form-control">
+            <input type="text" name="name" value="{{ $data->name }}" class="form-control">
             <label for="image">Image</label>
-            <input type="file" name="image" id="form-control"><br>
+            <input type="file" name="image" class="form-control">
+            <br>
             <input type="submit" name="submit" class="btn btn-md btn-primary" value="Edit Data">
             <a href="{{ url('admin/category') }}" class="btn btn-md btn-warning"><i class="fas fa-chevron-circle-left"></i> Kembali</a>
         </form>

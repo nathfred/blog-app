@@ -1,4 +1,5 @@
 @extends('admin.app')
+
 @section('content')
     <h3>Category</h3>
     <hr>
@@ -7,13 +8,13 @@
             {{ Session::get('status') }}
         </div>
     @endif
-    <a href="{{ url('admin/category/create') }}" class="btn btn-md btn-primary mb-3"><i class="fas fa-plus"></i>Tambah Data</a>
+    <a href="{{ url('admin/category/create') }}" class="btn btn-md btn-primary mb-3"><i class="fas fa-plus"></i> Tambah Data</a>
     <table class="table table-bordered">
-        <thead>
+        <thead class="bg-primary text-light">
             <tr>
-                <th>No</th>
                 <th>Name</th>
                 <th>Image</th>
+                <th>Action</th>
             </tr>
         </thead>
         @foreach($data as $cat)
