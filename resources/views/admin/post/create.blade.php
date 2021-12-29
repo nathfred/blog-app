@@ -36,7 +36,7 @@
                 <option value="1">Publish</option>
             </select>
             <br>
-            <textarea name="content" id="content" cols="50" rows="10"></textarea>
+            <textarea name="content" id="content" cols="50" rows="10" class="form-control"></textarea>
             <br>
             
             <input type="submit" name="submit" class="btn btn-md btn-primary" value="Tambah Data">

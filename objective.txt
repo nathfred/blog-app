@@ -1,0 +1,4 @@
+-Konversi bahasa blade (Views)
+-Controller
+-Routing
+-Model Relationship

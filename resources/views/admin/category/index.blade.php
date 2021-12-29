@@ -17,15 +17,19 @@
                 <th>Action</th>
             </tr>
         </thead>
-        @foreach($data as $cat)
-            <tr>
-                <td>{{ $cat->name }}</td>
-                <td><img src="{{ url($cat->image) }}" width="100px;"></td>
-                <td>
-                    <a href="{{ url('admin/category/edit/'.$cat->id) }}" class="btn btn-primary btn-md"><i class="fas fa-edit"></i> Edit</a>
-                    <a href="{{ url('admin/category/delete/'.$cat->id) }}" class="btn btn-danger btn-md"><i class="fas fa-trash"></i> Delete</a>
-                </td>
-            </tr>
-        @endforeach
+        @if (count($data) > 0)
+            @foreach($data as $cat)
+                <tr>
+                    <td>{{ $cat->name }}</td>
+                    <td><img src="{{ url($cat->image) }}" width="100px;"></td>
+                    <td>
+                        <a href="{{ url('admin/category/edit/'.$cat->id) }}" class="btn btn-primary btn-md"><i class="fas fa-edit"></i> Edit</a>
+                        <a href="{{ url('admin/category/delete/'.$cat->id) }}" class="btn btn-danger btn-md"><i class="fas fa-trash"></i> Delete</a>
+                    </td>
+                </tr>
+            @endforeach
+        @else
+            <tr><td align='center' colspan='7'>Tidak Ada Pengajuan</td></tr>
+        @endif
     </table>
 @endsection

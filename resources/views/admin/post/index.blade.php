@@ -13,6 +13,7 @@
         <thead class="bg-primary text-light">
             <tr>
                 <th>Title</th>
+                <th>Content</th>
                 <th>Thumbnail</th>
                 <th>Category_ID</th>
                 <th>Headline</th>
@@ -20,30 +21,35 @@
                 <th>Action</th>
             </tr>
         </thead>
-        @foreach($data as $post)
-            <tr>
-                <td>{{ $post->title }}</td>
-                <td><img src="{{ url($post->thumbnail) }}" width="100px;"></td>
-                <td>{{ $post->category_id }}</td>
-                @if ($post->headline == 1)
-                    <td>Yes</td>
-                @elseif ($post->headline == 0)
-                    <td>No</td>
-                @else
-                    <td>Unknown</td>
-                @endif
-                @if ($post->status == 1)
-                    <td>Yes</td>
-                @elseif ($post->status == 0)
-                    <td>No</td>
-                @else
-                    <td>Unknown</td>
-                @endif
-                <td>
-                    <a href="{{ url('admin/post/edit/'.$post->id) }}" class="btn btn-primary btn-md"><i class="fas fa-edit"></i> Edit</a>
-                    <a href="{{ url('admin/post/delete/'.$post->id) }}" class="btn btn-danger btn-md"><i class="fas fa-trash"></i> Delete</a>
-                </td>
-            </tr>
-        @endforeach
+        @if (count($data) > 0)
+            @foreach($data as $post)
+                <tr>
+                    <td>{{ $post->title }}</td>
+                    <td>{!! substr($post->content,3) !!}</td>
+                    <td><img src="{{ url($post->thumbnail) }}" width="100px;"></td>
+                    <td>{{ $post->category_id }}</td>
+                    @if ($post->headline == 1)
+                        <td>Yes</td>
+                    @elseif ($post->headline == 0)
+                        <td>No</td>
+                    @else
+                        <td>Unknown</td>
+                    @endif
+                    @if ($post->status == 1)
+                        <td>Yes</td>
+                    @elseif ($post->status == 0)
+                        <td>No</td>
+                    @else
+                        <td>Unknown</td>
+                    @endif
+                    <td>
+                        <a href="{{ url('admin/post/edit/'.$post->id) }}" class="btn btn-primary btn-md"><i class="fas fa-edit"></i> Edit</a>
+                        <a href="{{ url('admin/post/delete/'.$post->id) }}" class="btn btn-danger btn-md"><i class="fas fa-trash"></i> Delete</a>
+                    </td>
+                </tr>
+            @endforeach
+        @else
+            <tr><td align='center' colspan='8'>Tidak Ada Data</td></tr>
+        @endif
     </table>
 @endsection

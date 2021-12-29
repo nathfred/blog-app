@@ -17,12 +17,14 @@
             @csrf
             <label for="title">Title</label>
             <input type="text" value="{{ $data->title }}" name="title" class="form-control">
-            <label for="thumbnail">Thumbnail</label>
-            <input type="file" name="thumbnail" class="form-control"><br>
+            <label for="thumbnail">Thumbnail</label><br>
+            <img src="{{ url($data->thumbnail) }}" alt="thubmnail" style="max-height: 200px; max-width: 200px;">
+            <input type="file" name="thumbnail" class="form-control">
             <label for="category">Category</label>
             <select name="categories_id" id="category" class="form-control">
+                {{-- <option>Choose Category</option> --}}
                 @foreach ($category as $cat)
-                    <option value="{{ $cat->id }}" {{ ($cat->id == $data->categories_id) ? 'selected' : ''}}>{{ $cat->name }}</option>
+                    <option value="{{ $cat->id }}" class="form-edit" {{ ($data->category_id == $cat->id) ? 'selected' : ''}}>{{ $cat->name }}</option>
                 @endforeach
             </select>
             <label for="headline">Headline</label>
@@ -36,7 +38,7 @@
                 <option value="1" {{ ($data->status == 1) ? 'selected' : '' }} >Publish</option>
             </select>
             <br>
-            <textarea name="content" id="content" cols="50" rows="10">{{ $data->content }}</textarea>
+            <textarea name="content" id="content" cols="50" rows="10" class="form-control">{{ $data->content }}</textarea>
             <br>
             
             <input type="submit" name="submit" class="btn btn-md btn-primary" value="Edit Data">
@@ -46,7 +48,8 @@
 @endsection
 
 @section('js')
-    <script src="{{ asset('assets/ckeditor/ckeditor.js') }}"></script>
+    {{-- <script src="{{ asset('assets/ckeditor/ckeditor.js') }}"></script> --}}
+    <script src="//cdn.ckeditor.com/4.17.1/standard/ckeditor.js"></script>
     <script>
         var content = document.getElementById("content");
         CKEDITOR.replace(content, {

@@ -3,7 +3,11 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\PortalController;
+use App\Http\Controllers\CommentController;
+use App\Http\Controllers\MessageController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\MainmenuController;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,14 +20,30 @@ use App\Http\Controllers\CategoryController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return redirect()->route('login');
+// });
 
-Route::get('register', [AdminController::class, 'register']);
+Route::get('register', [AdminController::class, 'register'])->name('register');
 Route::post('register', [AdminController::class, 'postRegister']);
-Route::get('login', [AdminController::class, 'login']);
+Route::get('login', [AdminController::class, 'login'])->name('login');
 Route::post('login', [AdminController::class, 'postLogin']);
+Route::get('logout', [AdminController::class, 'logout'])->name('logout');
+
+Route::get('/', [PortalController::class, 'index']);
+Route::get('about', [PortalController::class, 'about']);
+Route::get('contact', [PortalController::class, 'contact']);
+Route::get('post', [PortalController::class, 'post']);
+Route::get('post-detail/{id}', [PortalController::class, 'postDetail']);
+Route::get('menu/{id}', [PortalController::class, 'menu']);
+Route::get('category/{id}', [PortalController::class, 'category']);
+Route::get('search', [PortalController::class, 'search']);
+Route::prefix('comment')->group(function () {
+    Route::post('/', [CommentController::class, 'insert']);
+});
+Route::prefix('contact')->group(function () {
+    Route::post('/', [MessageController::class, 'insert']);
+});
 
 Route::middleware('checkAdmin')->group(function () {
     Route::prefix('admin')->group(function () {
