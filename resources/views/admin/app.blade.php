@@ -52,22 +52,18 @@
             <div class="d-flex my-2 my-lg-0">
                 <div class="btn-group btn-group-toggle" data-toggle="buttons">
                     <label class="btn btn-secondary active">
-                        <a href="{{ url('admin/profile/' . session('admin_id')) }}" class="link-menu">Profile</a>
+                        <a href="{{ url('admin/profile/' . session('admin_id')) }}" id="profilebutton" class="link-menu">Profile</a>
                     </label>
                     <label class="btn btn-secondary">
-                        <a href="{{ url('logout') }}" class="link-menu">Log Out</a>
+                        <a href="{{ url('logout') }}" id="logoutbutton" class="link-menu">Log Out</a>
                     </label>
                 </div>
             </div>
-            {{-- <form class="d-flex">
-                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                <button class="btn btn-outline-success" type="submit">Search</button>
-            </form> --}}
         </div>
     </nav>
 
     <div class="container-fluid mt-3">
-        <div class="jumbotron">
+        <div class="jumbotron"> 
             @yield('content')
         </div>
     </div>
@@ -88,4 +84,15 @@
     @yield('js')
 
 </body>
+
+{{-- FIX FOR FAILED NAVBAR REDIRECT (PROFILE & LOGOUT BUTTON) (JQUERY JS PROBLEM) --}}
+<script>
+    document.getElementById("profilebutton").onclick = function () {
+        location.href = "{{ url('admin/profile/' . session('admin_id')) }}";
+    };
+    document.getElementById("logoutbutton").onclick = function () {
+        location.href = "{{ url('logout') }}";
+    };
+</script>
+
 </html>
