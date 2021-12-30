@@ -30,6 +30,7 @@ Route::get('login', [AdminController::class, 'login'])->name('login');
 Route::post('login', [AdminController::class, 'postLogin']);
 Route::get('logout', [AdminController::class, 'logout'])->name('logout');
 
+// LANDING PAGE
 Route::get('/', [PortalController::class, 'index']);
 Route::get('about', [PortalController::class, 'about']);
 Route::get('contact', [PortalController::class, 'contact']);
@@ -45,6 +46,7 @@ Route::prefix('contact')->group(function () {
     Route::post('/', [MessageController::class, 'insert']);
 });
 
+// CMS ADMIN
 Route::middleware('checkAdmin')->group(function () {
     Route::prefix('admin')->group(function () {
         Route::get('/', [AdminController::class, 'index']);
