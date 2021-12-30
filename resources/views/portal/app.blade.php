@@ -114,7 +114,7 @@
 									<div class="post-info">
 										<a class="btn category-btn" href="{{ url('category/'.$posts->category->id) }}">{{ $posts->category->name }}</a>
 										<h5><a href="{{ url('post->detail/'.$posts->id) }}"><b class="light-color">{{ $posts->title }}</b></a></h5>
-										<h6 class="date"><em>{{ date('D, M, Y', strtotime($posts->created_at)) }}</em></h6>
+										<h6 class="date"><em>{{ date('d, M Y', strtotime($posts->created_at)) }}</em></h6>
 									</div>
 								</div>
 							@endforeach
