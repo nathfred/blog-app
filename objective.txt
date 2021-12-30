@@ -1,4 +1,21 @@
--Konversi bahasa blade (Views)
--Controller
 -Routing
 -Model Relationship
+
+Auth
+-Register (DONE)
+-Login (DONE)
+-Middleware (DONE)
+
+CMS (Admin)
+-Category (DONE)
+-Post (DONE)
+-MainMenu (DONE)
+-Slider
+-Message
+-Profile
+
+Landing Page (Public non Middleware)
+-Import template
+-Konversi blade
+-Routing
+-Controller (Portal,Comment,Message)

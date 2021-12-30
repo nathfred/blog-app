@@ -1,7 +1,7 @@
 @extends('admin.app')
 
 @section('content')
-    <h3>Create Main Menu</h3>
+    <h3>Edit Main Menu</h3>
     <hr>
     <div class="col-lg-6">
         @if ($errors->any())

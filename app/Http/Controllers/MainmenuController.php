@@ -64,27 +64,27 @@ class MainMenuController extends Controller
 
     public function update(Request $request, $id)
     {
-        $d = Post::find($id);
+        $d = MainMenu::find($id);
         if ($d == NULL) {
-            return redirect('admin/post')->with('status', 'Post Tidak Ditemukan!');
+            return redirect('admin/mainmenu')->with('status', 'Main Menu Tidak Ditemukan!');
         }
 
         $req = $request->all();
 
-        if ($request->hasFile('thumbnail')) {
-            if ($d->thumbnail !== NULL) {
-                File::delete($d->thumbnail);
+        if ($request->hasFile('file')) {
+            if ($d->file !== NULL) {
+                File::delete($d->file);
             }
-            $post = Str::random("20") . "-" . $request->thumbnail->getClientOriginalName();
-            $request->file('thumbnail')->move("file/post/", $post);
-            $req['thumbnail'] = "file/post/" . $post;
+            $mainmenu = Str::random("20") . "-" . $request->file->getClientOriginalName();
+            $request->file('file')->move("file/mainmenu/", $mainmenu);
+            $req['file'] = "file/mainmenu/" . $mainmenu;
         }
 
-        $data = Post::find($id)->update($req);
+        $data = MainMenu::find($id)->update($req);
         if ($data) {
-            return redirect('admin/post')->with('status', 'Post Berhasil Diubah!');
+            return redirect('admin/mainmenu')->with('status', 'Main Menu Berhasil Diubah!');
         }
-        return redirect('admin/post')->with('status', 'Post Gagal Diubah!');
+        return redirect('admin/mainmenu')->with('status', 'Main Menu Gagal Diubah!');
     }
 
     public function delete($id)
@@ -98,8 +98,8 @@ class MainMenuController extends Controller
         }
         $delete = $data->delete();
         if ($delete) {
-            return redirect('admin/mainmenu')->with('status', 'Berhasil Hapus mainmenu!');
+            return redirect('admin/mainmenu')->with('status', 'Berhasil Hapus Main Menu!');
         }
-        return redirect('admin/mainmenu')->with('status', 'Gagal Hapus mainmenu!');
+        return redirect('admin/mainmenu')->with('status', 'Gagal Hapus Main Menu!');
     }
 }
