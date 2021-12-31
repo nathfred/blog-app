@@ -28,8 +28,8 @@ class PortalController extends Controller
     {
         $data['posts'] = Post::where('status', 1)->get();
         $data['latestposts'] = Post::where('status', 1)->limit(5)->get();
-        $data['user'] = User::first();
         $data['category'] = Category::get();
+        $data['user'] = User::first();
 
         return view('portal.about', compact('data'));
     }
@@ -38,8 +38,8 @@ class PortalController extends Controller
     {
         $data['posts'] = Post::where('status', 1)->get();
         $data['latestposts'] = Post::where('status', 1)->limit(5)->get();
-        $data['user'] = User::first();
         $data['category'] = Category::get();
+        $data['user'] = User::first();
 
         return view('portal.contact', compact('data'));
     }
@@ -48,8 +48,8 @@ class PortalController extends Controller
     {
         $data['posts'] = Post::where('status', 1)->get();
         $data['latestposts'] = Post::where('status', 1)->limit(5)->get();
-        $data['user'] = User::first();
         $data['category'] = Category::get();
+        $data['user'] = User::first();
 
         return view('portal.post', compact('data'));
     }
@@ -58,9 +58,9 @@ class PortalController extends Controller
     {
         $data['posts'] = Post::where('status', 1)->get();
         $data['latestposts'] = Post::where('status', 1)->limit(5)->get();
-        $data['user'] = User::first();
         $data['category'] = Category::get();
         $data['comment'] = Comment::where('posts_id', $id)->get();
+        $data['user'] = User::first();
         $posts = Post::find($id);
 
         return view('portal.post-detail', compact('posts', 'data'));
@@ -70,8 +70,8 @@ class PortalController extends Controller
     {
         $data['posts'] = Post::where('status', 1)->get();
         $data['latestposts'] = Post::where('status', 1)->limit(5)->get();
-        $data['user'] = User::first();
         $data['category'] = Category::get();
+        $data['user'] = User::first();
         $data['menu'] = MainMenu::find($id);
 
         return view('portal.menu', compact('data'));
@@ -79,10 +79,10 @@ class PortalController extends Controller
 
     public function category($id)
     {
-        $data['posts'] = Post::where('status', 1)->get();
+        $data['posts'] = Post::where('status', 1)->where('categories_id', $id)->get();
         $data['latestposts'] = Post::where('status', 1)->limit(5)->get();
-        $data['user'] = User::first();
         $data['category'] = Category::get();
+        $data['user'] = User::first();
 
         return view('portal.category', compact('data'));
     }
@@ -91,8 +91,8 @@ class PortalController extends Controller
     {
         $data['posts'] = Post::where('status', 1)->where('title', 'LIKE', '%' . $request->search . '%')->orWhere('content', 'LIKE', '%' . $request->search . '%')->get();
         $data['latestposts'] = Post::where('status', 1)->limit(5)->get();
-        $data['user'] = User::first();
         $data['category'] = Category::get();
+        $data['user'] = User::first();
 
         return view('portal.search', compact('data'));
     }
