@@ -31,21 +31,21 @@
                     <td>{{ $mainmenu->category }}</td>
                     {{-- CONTENT --}}
                     @if ($mainmenu->content !== NULL)
-                        <td>{!! substr($post->content,3) !!}</td>
+                        <td>{!! substr($mainmenu->content,3) !!}</td>
                     @else
-                        <td>-</td>
+                        <td class="text-center">-</td>
                     @endif
                     {{-- FILE --}}
-                    @if ($mainmenu->file !== NULL)
-                        <td><img src="{{ url($mainmenu->file) }}" width="100px;"></td>
+                    @if ($mainmenu->file === NULL || $mainmenu->file == '')
+                        <td class="text-center">-</td>
                     @else
-                        <td>-</td>
+                        <td><img src="{{ url($mainmenu->file) }}" width="100px;"></td>
                     @endif
                     {{-- URL --}}
                     @if ($mainmenu->url !== NULL)
                         <td>{{ $mainmenu->url }}</td>
                     @else
-                        <td>-</td>
+                        <td class="text-center">-</td>
                     @endif
                         <td>{{ $mainmenu->order }}</td>
                     @if ($mainmenu->status == 1)

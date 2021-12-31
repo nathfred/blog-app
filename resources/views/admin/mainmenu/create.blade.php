@@ -30,24 +30,24 @@
                 <option value="content">Content</option>
                 <option value="file">File</option>
             </select>
-            {{-- <div id="contents">
+            <div id="links">
+                <label for="url">URL</label>
+                <input name="url" id="url" type="text" class="form-control">
+            </div>
+            <div id="contents">
                 <label for="content">Content</label>
-                <textarea name="content" id="content" cols="50" rows="10"></textarea>
+                <textarea name="content" id="content" cols="50" rows="10" class="form-control"></textarea>
             </div>
             <div id="files">
                 <label for="file">File</label>
-                <input id="file" type="file" type="file" class="form-control">
+                <input name="file" id="file" type="file" class="form-control">
             </div>
-            <div id="links">
-                <label for="URL">URL</label>
-                <input id="link" type="text" type="text" class="form-control">
-            </div> --}}
-            <label for="content">Content</label>
+            {{-- <label for="content">Content</label>
             <textarea name="content" id="content" cols="50" rows="10" class="form-control"></textarea>
             <label for="file">File</label>
             <input id="file" type="file" name="file" class="form-control">
             <label for="URL">URL</label>
-            <input id="link" type="text" name="url" class="form-control">
+            <input id="link" type="text" name="url" class="form-control"> --}}
             <label for="Order">Order</label>
             <input type="number" name="order" class="form-control">
             <label for="Status">Status</label>
@@ -65,8 +65,8 @@
 @section('js')
     <script>
         $(document).ready(function() {
+            $('#links').show();
             $('#contents').hide();
-            $('#links').hide();
             $('#files').hide();
 
             $('#category').on('change', function() {

@@ -13,7 +13,7 @@
             </ul>
         </div>
         @endif
-        <form action="{{ url('admin/mainmenu/create') }}" method="POST" enctype="multipart/form-data">
+        <form action="{{ url('admin/mainmenu/edit/'.$data->id) }}" method="POST" enctype="multipart/form-data">
             @csrf
             <label for="title">Title</label>
             <input type="text" name="title" class="form-control" value="{{ $data->title }}">
@@ -27,28 +27,22 @@
             <label for="category">Category</label>
             <select name="category" id="category" class="form-control">
                 <option value="link" {{ ($data->category == 'link')  ? 'selected' : ''}}>Link</option>
-                <option value="content {{ ($data->category == 'content')  ? 'selected' : ''}}">Content</option>
-                <option value="file {{ ($data->category == 'file')  ? 'selected' : ''}}">File</option>
+                <option value="content" {{ ($data->category == 'content')  ? 'selected' : ''}}>Content</option>
+                <option value="file" {{ ($data->category == 'file')  ? 'selected' : ''}}>File</option>
             </select>
-            {{-- <div id="contents">
+            <div id="links">
+                <label for="url">URL</label>
+                <input id="url" type="text" name="url" class="form-control" value={{ $data->url }}>
+            </div>
+            <div id="contents">
                 <label for="content">Content</label>
-                <textarea name="content" id="content" cols="50" rows="10"></textarea>
+                <textarea name="content" id="content" cols="50" rows="10" class="form-control">{{ $data->content }}</textarea>
             </div>
             <div id="files">
-                <label for="file">File</label>
-                <input id="file" type="file" type="file" class="form-control">
+                <label for="file">File</label><br>
+                <img src="{{ url($data->file) }}" alt="file attachment" style="max-height: 200px; max-width: 200px;">
+                <input id="file" type="file" name="file" class="form-control">
             </div>
-            <div id="links">
-                <label for="URL">URL</label>
-                <input id="link" type="text" type="text" class="form-control">
-            </div> --}}
-            <label for="content">Content</label>
-            <textarea name="content" id="content" cols="50" rows="10" class="form-control">{{ $data->content }}</textarea>
-            <label for="file">File</label><br>
-            <img src="{{ url($data->file) }}" alt="file" style="max-height: 200px; max-width: 200px;">
-            <input id="file" type="file" name="file" class="form-control">
-            <label for="URL">URL</label>
-            <input id="link" type="text" name="url" class="form-control" value={{ $data->url }}>
             <label for="Order">Order</label>
             <input type="number" name="order" class="form-control" value={{ $data->order }}>
             <label for="Status">Status</label>
@@ -57,7 +51,7 @@
                 <option value="1" {{ ($data->status == 1) ? 'selected' : '' }} >Publish</option>
             </select>
             <br>            
-            <input type="submit" name="submit" class="btn btn-md btn-primary" value="Tambah Data">
+            <input type="submit" name="submit" class="btn btn-md btn-primary" value="Edit Data">
             <a href="{{ url('admin/mainmenu') }}" class="btn btn-md btn-warning"><i class="fas fa-chevron-circle-left"></i> Kembali</a>
         </form>
     </div>
@@ -66,9 +60,12 @@
 @section('js')
     <script>
         $(document).ready(function() {
-            $('#contents').hide();
             $('#links').hide();
+            $('#contents').hide();
             $('#files').hide();
+            
+            var data = $('#category').val();
+            $('#'+data+'s').show();        
 
             $('#category').on('change', function() {
                 var data = $(this).val();

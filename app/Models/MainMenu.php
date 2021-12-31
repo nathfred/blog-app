@@ -23,7 +23,7 @@ class MainMenu extends Model
         'parent' => 'required|integer',
         'category' => 'required|in:link,content,file',
         'content' => 'nullable|string',
-        'file' => 'nullable|max:100',
+        'file' => 'nullable',
         'url' => 'nullable|max:100',
         'order' => 'required',
         'status' => 'required',
