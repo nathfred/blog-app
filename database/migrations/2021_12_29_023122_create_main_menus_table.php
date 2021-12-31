@@ -21,8 +21,8 @@ class CreateMainMenusTable extends Migration
             $table->text('content')->nullable();
             $table->string('file', 100)->nullable();
             $table->string('url', 100)->nullable();
-            $table->string('order');
-            $table->string('status');
+            $table->integer('order');
+            $table->integer('status');
             $table->timestamps();
         });
     }

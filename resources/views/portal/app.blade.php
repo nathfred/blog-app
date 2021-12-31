@@ -20,17 +20,17 @@
 	<link href="{{ url('assets/portal/01-homepage/css/responsive.css') }}" rel="stylesheet">
 </head>
 <body>
-	<header>
-		<div class="middle-menu center-text"><a href="#" class="logo"><img src="{{ url('assets/images/logo.png') }}" alt="Logo Image"></a></div>
+<header>
+		<div class="middle-menu center-text"><a href="#" class="logo"><img src="{{ url('assets/portal/images/nf.png') }}" alt="Logo Image"></a></div>
 		<div class="bottom-area">
 			<div class="menu-nav-icon" data-nav-menu="#main-menu"><i class="ion-navicon"></i></div>
 			<ul class="main-menu visible-on-click" id="main-menu">
 				@php
-					$data['mainmenu'] = DB::table('mainmenus')->where('status,1')->where('parent',0)->orderBy('order','asc')->get();
+					$data['mainmenu'] = DB::table('mainmenus')->where('status',1)->where('parent',0)->orderBy('order','asc')->get();
 				@endphp
-				@foreach($data['mainmenu' as $menu])
+				@foreach($data['mainmenu'] as $menu)
 					@php
-						$data['mainmenu2'] = DB::table('mainmenus')->where('status,1')->where('parent',$menu->id)->orderBy('order','asc')->get();
+						$data['mainmenu2'] = DB::table('mainmenus')->where('status',1)->where('parent',$menu->id)->orderBy('order','asc')->get();
 					@endphp	
 					@if (count($data['mainmenu2'] > 0))
 						<li class="drop-down"><a href="#!">Categories<i class="ion-ios-arrow-down"></i></a>
@@ -92,7 +92,7 @@
 							<p>{!! $data['user']->desc !!}</p>
 
 							{{-- <div class="signature-image">
-								<img src="{{ url('images/signature-image.png') }}" alt="Signature Image">
+								<img src="{{ url('images/portal/signature-image.png') }}" alt="Signature Image">
 							</div> --}}
 						</div><!-- sidebar-section about-author -->
 
@@ -114,7 +114,7 @@
 									<div class="post-info">
 										<a class="btn category-btn" href="{{ url('category/'.$posts->category->id) }}">{{ $posts->category->name }}</a>
 										<h5><a href="{{ url('post->detail/'.$posts->id) }}"><b class="light-color">{{ $posts->title }}</b></a></h5>
-										<h6 class="date"><em>{{ date('d, M Y', strtotime($posts->created_at)) }}</em></h6>
+										<h6 class="date"><em>{{ date('d M Y', strtotime($posts->created_at)) }}</em></h6>
 									</div>
 								</div>
 							@endforeach

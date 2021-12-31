@@ -62,7 +62,7 @@
                 </tr>
             @endforeach
         @else
-            <tr><td align='center' colspan='8'>Tidak Ada Data</td></tr>
+            <tr><td align='center' colspan='9'>Tidak Ada Data</td></tr>
         @endif
     </table>
 @endsection

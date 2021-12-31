@@ -21,7 +21,7 @@ class Post extends Model
 
     public static $rules = [
         'title' => 'required|max:100',
-        'thumbnail' => 'required|max:100',
+        'thumbnail' => 'required',
         'category_id' => 'required|integer',
         'content' => 'required|string',
         'is_headline' => 'required|boolean',
@@ -30,6 +30,6 @@ class Post extends Model
 
     public function category()
     {
-        return $this->hasOne(Category::class);
+        return $this->belongsTo(Category::class);
     }
 }

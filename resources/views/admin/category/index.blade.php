@@ -29,7 +29,7 @@
                 </tr>
             @endforeach
         @else
-            <tr><td align='center' colspan='7'>Tidak Ada Pengajuan</td></tr>
+            <tr><td align='center' colspan='7'>Tidak Ada Data</td></tr>
         @endif
     </table>
 @endsection

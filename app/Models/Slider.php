@@ -25,4 +25,9 @@ class Slider extends Model
         'order' => 'required',
         'status' => 'required',
     ];
+
+    public function category()
+    {
+        return $this->belongsTo(Category::class);
+    }
 }

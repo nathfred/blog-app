@@ -40,7 +40,7 @@ class SliderController extends Controller
         $requests = $request->all();
         $requests['image'] = "";
         if ($request->hasFile('image')) {
-            $files = Str::random("20") . "-" . $request->file->getClientOriginalName();
+            $files = Str::random("20") . "-" . $request->image->getClientOriginalName();
             $request->file('image')->move("file/slider/", $files);
             $requests['image'] = "file/slider/" . $files;
         }
