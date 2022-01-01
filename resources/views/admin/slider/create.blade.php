@@ -19,6 +19,12 @@
             <input type="text" name="title" class="form-control">
             <label for="image">Image</label>
             <input id="image" type="file" name="image" class="form-control">
+            <label for="category_id">Category</label>
+            <select name="category_id" id="category_id" class="form-control">
+                @foreach ($category as $cat)
+                    <option value="{{ $cat->id }}">{{ $cat->name }}</option>
+                @endforeach
+            </select>
             <label for="URL">URL</label>
             <input id="url" type="text" name="url" class="form-control">
             <label for="Order">Order</label>

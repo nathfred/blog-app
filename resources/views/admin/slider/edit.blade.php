@@ -20,6 +20,13 @@
             <label for="image">Image</label><br>
             <img src="{{ url($data->image) }}" alt="image" style="max-height: 200px; max-width: 200px;">
             <input id="image" type="file" name="image" class="form-control">
+            <label for="category">Category</label>
+            <select name="categories_id" id="category" class="form-control">
+                {{-- <option>Choose Category</option> --}}
+                @foreach ($category as $cat)
+                    <option value="{{ $cat->id }}" class="form-edit" {{ ($data->category_id == $cat->id) ? 'selected' : ''}}>{{ $cat->name }}</option>
+                @endforeach
+            </select>
             <label for="URL">URL</label>
             <input id="link" type="text" name="url" class="form-control" value={{ $data->url }}>
             <label for="Order">Order</label>

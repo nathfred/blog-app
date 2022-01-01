@@ -27,20 +27,20 @@
                     <td>{{ $post->title }}</td>
                     <td>{!! substr($post->content,3) !!}</td>
                     <td><img src="{{ url($post->thumbnail) }}" width="100px;"></td>
-                    <td>{{ $post->category_id }}</td>
-                    @if ($post->headline == 1)
-                        <td>Yes</td>
-                    @elseif ($post->headline == 0)
-                        <td>No</td>
+                    <td class="text-center">{{ $post->category_id }}</td>
+                    @if ($post->is_headline == 1)
+                        <td class="text-center">Yes</td>
+                    @elseif ($post->is_headline == 0)
+                        <td class="text-center">No</td>
                     @else
-                        <td>Unknown</td>
+                        <td class="text-center">Unknown</td>
                     @endif
                     @if ($post->status == 1)
-                        <td>Yes</td>
+                        <td class="text-center">Yes</td>
                     @elseif ($post->status == 0)
-                        <td>No</td>
+                        <td class="text-center">No</td>
                     @else
-                        <td>Unknown</td>
+                        <td class="text-center">Unknown</td>
                     @endif
                     <td>
                         <a href="{{ url('admin/post/edit/'.$post->id) }}" class="btn btn-primary btn-md"><i class="fas fa-edit"></i> Edit</a>

@@ -1,7 +1,10 @@
 <!DOCTYPE HTML>
 <html lang="en">
 <head>
-	<title>Blog NATHFRED</title>
+	@isset($title)
+		<title>NATHFRED | {{ $title }}</title>
+	@endisset
+	<title>NATHFRED Blog</title>
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta charset="UTF-8">
@@ -20,8 +23,8 @@
 	<link href="{{ url('assets/portal/01-homepage/css/responsive.css') }}" rel="stylesheet">
 </head>
 <body>
-<header>
-		<div class="middle-menu center-text"><a href="#" class="logo"><img src="{{ url('assets/portal/images/nf.png') }}" alt="Logo Image"></a></div>
+	<header>
+		<div class="middle-menu center-text"><a href="{{ url('/') }}" class="logo"><img src="{{ url('assets/portal/images/nf.png') }}" alt="Logo Image"></a></div>
 		<div class="bottom-area">
 			<div class="menu-nav-icon" data-nav-menu="#main-menu"><i class="ion-navicon"></i></div>
 			<ul class="main-menu visible-on-click" id="main-menu">
@@ -32,7 +35,7 @@
 					@php
 						$data['mainmenu2'] = DB::table('mainmenus')->where('status',1)->where('parent',$menu->id)->orderBy('order','asc')->get();
 					@endphp	
-					@if (count($data['mainmenu2'] > 0))
+					@if (count($data['mainmenu2']) > 0)
 						<li class="drop-down"><a href="#!">Categories<i class="ion-ios-arrow-down"></i></a>
 							<ul class="drop-down-menu">
 								@foreach ($data['mainmenu2'] as $menu2)
@@ -58,7 +61,8 @@
 
 	@yield('slider')
 
-	<section class="section blog-area">
+	{{-- <section class="section blog-area"> --}}
+	<section class="blog-area">
 		<div class="container">
 			<div class="row">
 				<div class="col-lg-8 col-md-12">

@@ -6,7 +6,7 @@
 @endsection
 
 @section('slider')
-    <div class="main-slider">
+    <div class="main-slider mb-5">
         <div id="slider">
 
             @foreach($data['sliders'] as $slider)

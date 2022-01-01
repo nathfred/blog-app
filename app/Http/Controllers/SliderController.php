@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
 use App\Http\Requests\StoreSliderRequest;
 use App\Http\Requests\UpdateSliderRequest;
+use App\Models\Category;
 
 class SliderController extends Controller
 {
@@ -30,7 +31,8 @@ class SliderController extends Controller
     public function create()
     {
         $parent = Slider::get();
-        return view('admin.slider.create', compact('parent'));
+        $category = Category::get();
+        return view('admin.slider.create', compact('parent', 'category'));
     }
 
     public function insert(Request $request)
@@ -57,7 +59,8 @@ class SliderController extends Controller
     {
         $data = Slider::find($id);
         $parent = Slider::get();
-        return view('admin.slider.edit', compact(['data', 'parent']));
+        $category = Category::get();
+        return view('admin.slider.edit', compact(['data', 'parent', 'category']));
     }
 
     public function update(Request $request, $id)
