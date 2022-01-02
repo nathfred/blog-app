@@ -1,5 +1,5 @@
--Routing
--Model Relationship
+-Routing (DONE)
+-Model Relationship (DONE)
 
 Auth
 -Register (DONE)
@@ -10,12 +10,18 @@ CMS (Admin)
 -Category (DONE)
 -Post (DONE)
 -MainMenu (DONE)
--Slider
+-Slider (DONE)
 -Message
 -Profile
 
 Landing Page (Public non Middleware)
--Import template
+-Import template (DONE)
 -Konversi blade
--Routing
+-Routing (DONE)
 -Controller (Portal,Comment,Message)
+-Public Comment (DONE)
+-About (Kind of..?)
+
+Database
+-Set up account
+-Configure .env

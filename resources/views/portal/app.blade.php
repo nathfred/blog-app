@@ -112,7 +112,7 @@
 
 						<div class="sidebar-section latest-post-area">
 							<h4 class="title"><b class="light-color">Latest Posts</b></h4>
-							@foreach($data['latestposts'] as $post)
+							@foreach($data['latestposts'] as $posts)
 								<div class="latest-post" href="{{ url('post-detail/'.$posts->id) }}">
 									<div class="l-post-image"><img src="{{ url($posts->thumbnail) }}" alt="Category Image"></div>
 									<div class="post-info">
