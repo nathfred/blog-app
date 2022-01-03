@@ -35,10 +35,10 @@ class MessageController extends Controller
 
         $message = Message::create($requests);
         if ($message) {
-            return redirect('admin/message')->with('status', 'Berhasil Menambah message!');
+            return back()->with('status', 'Berhasil Menambah Message! Hanya Admin Yang Dapat Membaca...');
         }
 
-        return redirect('admin/message')->with('status', 'Gagal Menambah message!');
+        return back()->with('status', 'Gagal Menambah Message!');
     }
 
     public function edit($id)

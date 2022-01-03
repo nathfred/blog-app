@@ -19,7 +19,7 @@ class CreateMessagesTable extends Migration
             $table->string('email', 50);
             $table->string('subject', 50);
             $table->text('message');
-            $table->timestamp('created_at', $precision = 0);
+            $table->timestamps();
         });
     }
 

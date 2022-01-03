@@ -11,7 +11,7 @@ CMS (Admin)
 -Post (DONE)
 -MainMenu (DONE)
 -Slider (DONE)
--Message
+-Message (DONE)
 -Profile
 
 Landing Page (Public non Middleware)
