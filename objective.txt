@@ -12,15 +12,16 @@ CMS (Admin)
 -MainMenu (DONE)
 -Slider (DONE)
 -Message (DONE)
--Profile
+-Profile (DONE)
 
 Landing Page (Public non Middleware)
 -Import template (DONE)
--Konversi blade
+-Konversi blade (DONE)
 -Routing (DONE)
 -Controller (Portal,Comment,Message)
 -Public Comment (DONE)
 -About (Kind of..?)
+-Dynamic Menu
 
 Database
 -Set up account

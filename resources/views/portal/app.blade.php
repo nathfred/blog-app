@@ -85,12 +85,12 @@
 
 						<div class="sidebar-section about-author center-text">
 							<div class="author-image">
-								<img src="{{ url($data['user']->image) }}" alt="{{ $data['user']->name }}">
+								<a href="{{ url('about') }}"><img src="{{ url($data['user']->image) }}" alt="{{ $data['user']->name }}"></a>
 							</div>
 							<hr>
 
 							<h4 class="author-name">
-								<b class="light-color">{{ $data['user']->name }}</b>
+								<a href="{{ url('about') }}"><b class="light-color">{{ $data['user']->name }}</b></a>
 							</h4>
 
 							<p>{!! $data['user']->desc !!}</p>

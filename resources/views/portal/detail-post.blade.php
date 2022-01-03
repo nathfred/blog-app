@@ -26,9 +26,9 @@
     </div><!-- single-post -->
 
     <div class="post-author">
-        <div class="author-image"><img src="{{ url($data['user']->image) }}" alt="{{ $data['user']->name }}"></div>
+        <div class="author-image"><a href="{{ url('about') }}"><img src="{{ url($data['user']->image) }}" alt="{{ $data['user']->name }}"></a></div>
         <div class="author-info">
-            <h4 class="name"><b class="light-color">{{ $data['user']->name }}</b></h4>
+            <h4 class="name"><a href="{{ url('about') }}"><b class="light-color">{{ $data['user']->name }}</b></a></h4>
             {!! $data['user']->desc !!}
         </div><!-- author-info -->
     </div><!-- post-author -->
