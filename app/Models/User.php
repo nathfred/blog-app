@@ -19,6 +19,8 @@ class User extends Authenticatable
      */
     protected $fillable = [
         'name',
+        'username',
+        'desc',
         'email',
         'email_verified_at',
         'remember_token',
@@ -30,7 +32,23 @@ class User extends Authenticatable
         'name' => 'required',
         'password' => 'required|min:5',
         'email' => 'required|unique:users',
-        'image' => 'required',
+        'image' => 'nullable',
+    ];
+
+    public static $rules_profile = [
+        'name' => 'required',
+        'username' => 'nullable',
+        'desc' => 'nullable',
+        'email' => 'required|unique:users',
+        'image' => 'nullable',
+    ];
+
+    public static $rules_profile_non_email = [
+        'name' => 'required',
+        'username' => 'nullable',
+        'desc' => 'nullable',
+        'email' => 'required',
+        'image' => 'nullable',
     ];
 
     /**

@@ -6,6 +6,8 @@ use Carbon\Carbon;
 use App\Models\User;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Session;
 
@@ -76,5 +78,49 @@ class AdminController extends Controller
     {
         Session::flush();
         return redirect('login')->with('status', 'Berhasil Logout!');
+    }
+
+    // EDIT PROFILE
+    public function edit($id)
+    {
+        $user = User::find($id);
+        // dd($user);
+
+        return view('admin.profile.edit', compact('user'));
+    }
+
+    // POST EDIT PROFILE
+    public function update(Request $request, $id)
+    {
+        // dd($request);
+
+        $d = User::find($id);
+        if ($d == NULL) {
+            return redirect('admin')->with('status', 'User Tidak Ditemukan! (INVALID ID)');
+        }
+
+        // VALIDASI EMAIL & IMAGE
+        if ($d->email == $request->email) { // JIKA GANTI EMAIL
+            $request->validate(User::$rules_profile_non_email);
+        } else { // JIKA TIDAK GANTI EMAIL
+            $request->validate(User::$rules_profile);
+        }
+
+        $requests = $request->all();
+        // $requests['image'] = "";
+        if ($request->hasFile('image')) {
+            if ($d->image !== NULL) {
+                File::delete($d->image);
+            }
+            $file_name = Str::random("20") . "-" . $request->image->getClientOriginalName();
+            $request->file('image')->move("file/admin/", $file_name);
+            $requests['image'] = "file/admin/" . $file_name;
+        }
+
+        $user = User::find($id)->update($requests);
+        if ($user) {
+            return redirect('admin/profile/' . $id)->with('status', 'Profile Berhasil Diubah!');
+        }
+        return redirect('admin/profile/' . $id)->with('status', 'Profile Gagal Diubah!');
     }
 }

@@ -13,6 +13,11 @@
 @endsection
 
 @section('content')
+    @if (Session::has('status'))
+        <div class="alert alert-warning" role="alert">
+            {{ Session::get('status') }}
+        </div>
+    @endif
     <h2>Dashboard</h2>
     <hr>
 
