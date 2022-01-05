@@ -14,6 +14,7 @@
             <tr>
                 <th>Title</th>
                 <th>Image</th>
+                <th>Category</th>
                 <th>Url</th>
                 <th>Order</th>
                 <th>Status</th>
@@ -25,6 +26,7 @@
                 <tr>
                     <td>{{ $slider->title }}</td>
                     <td>{{ $slider->image }}</td>
+                    <td>{{ $slider->category->name }}</td>
                     {{-- URL --}}
                     @if ($slider->url !== NULL)
                         <td>{{ $slider->url }}</td>

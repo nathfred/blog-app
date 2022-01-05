@@ -13,15 +13,15 @@
             </ul>
         </div>
         @endif
-        <form action="{{ url('admin/slider/create') }}" method="POST" enctype="multipart/form-data">
+        <form action="{{ url('admin/slider/edit/'.$data->id) }}" method="POST" enctype="multipart/form-data">
             @csrf
             <label for="title">Title</label>
             <input type="text" name="title" class="form-control" value="{{ $data->title }}">
             <label for="image">Image</label><br>
             <img src="{{ url($data->image) }}" alt="image" style="max-height: 200px; max-width: 200px;">
             <input id="image" type="file" name="image" class="form-control">
-            <label for="category">Category</label>
-            <select name="categories_id" id="category" class="form-control">
+            <label for="category_id">Category</label>
+            <select name="category_id" id="category_id" class="form-control">
                 {{-- <option>Choose Category</option> --}}
                 @foreach ($category as $cat)
                     <option value="{{ $cat->id }}" class="form-edit" {{ ($data->category_id == $cat->id) ? 'selected' : ''}}>{{ $cat->name }}</option>
@@ -37,7 +37,7 @@
                 <option value="1" {{ ($data->status == 1) ? 'selected' : '' }} >Publish</option>
             </select>
             <br>            
-            <input type="submit" name="submit" class="btn btn-md btn-primary" value="Tambah Data">
+            <input type="submit" name="submit" class="btn btn-md btn-primary" value="Edit Data">
             <a href="{{ url('admin/slider') }}" class="btn btn-md btn-warning"><i class="fas fa-chevron-circle-left"></i> Kembali</a>
         </form>
     </div>

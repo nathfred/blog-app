@@ -20,7 +20,7 @@
             <div class="card-body">
                 <div class="row">
                     <div class="col-lg-7">
-                        <img src="{{ asset('images/bg-register.jpg') }}" class="card-img-top">
+                        <img src="{{ asset('images/admin-page.jpg') }}" class="card-img-top">
                     </div>
 
                     <div class="col-lg-5">

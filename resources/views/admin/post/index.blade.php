@@ -15,7 +15,7 @@
                 <th>Title</th>
                 <th>Content</th>
                 <th>Thumbnail</th>
-                <th>Category_ID</th>
+                <th>Category</th>
                 <th>Headline</th>
                 <th>Status</th>
                 <th>Action</th>
@@ -27,7 +27,7 @@
                     <td>{{ $post->title }}</td>
                     <td>{!! substr($post->content,3) !!}</td>
                     <td><img src="{{ url($post->thumbnail) }}" width="100px;"></td>
-                    <td class="text-center">{{ $post->category_id }}</td>
+                    <td class="text-center">{{ $post->category->name }}</td>
                     @if ($post->is_headline == 1)
                         <td class="text-center">Yes</td>
                     @elseif ($post->is_headline == 0)

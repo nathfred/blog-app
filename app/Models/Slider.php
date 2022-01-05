@@ -26,6 +26,13 @@ class Slider extends Model
         'status' => 'required',
     ];
 
+    public static $rules_non_image = [
+        'title' => 'required|max:100',
+        'url' => 'required|max:50',
+        'order' => 'required',
+        'status' => 'required',
+    ];
+
     public function category()
     {
         return $this->belongsTo(Category::class);

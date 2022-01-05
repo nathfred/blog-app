@@ -9,7 +9,7 @@
 
 @section('content')
     <div class="single-post">
-        <div class="image-wrapper"><img src="{{ url('assets/portal/images/blog-2-1000x600.jpg') }}" alt="Blog Image"></div>
+        <div class="image-wrapper"><img src="{{ url($posts->thumbnail) }}" alt="Blog Image"></div>
 
         <div class="icons">
             <div class="left-area">

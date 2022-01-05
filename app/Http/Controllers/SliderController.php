@@ -65,10 +65,13 @@ class SliderController extends Controller
 
     public function update(Request $request, $id)
     {
+        // dd($request);
         $d = Slider::find($id);
         if ($d == NULL) {
             return redirect('admin/slider')->with('status', 'Slider Tidak Ditemukan!');
         }
+
+        $request->validate(Slider::$rules_non_image);
 
         $req = $request->all();
 
