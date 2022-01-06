@@ -36,7 +36,7 @@
                 </div>
             </div>
             <p class="date"><em>{{ date('d M Y', strtotime($headline->created_at)) }}</em></p>
-            <h3 class="title"><a href="{{ url('post-detail/',$headline->id) }}"><b class="light-color">{{ $headline->title }}</b></a></h3>
+            <h3 class="title"><a href="{{ url('post-detail/'.$headline->id) }}"><b class="light-color">{{ $headline->title }}</b></a></h3>
             <p>{!! substr(($headline->content),0,300) !!}</p>
             <a class="btn read-more-btn" href="{{ url('post-detail/'.$headline->id) }}"><b>READ MORE</b></a>
         </div><!-- single-post -->

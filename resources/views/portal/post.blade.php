@@ -15,7 +15,7 @@
                     <div class="recomend">
                         <div class="post-image"><img src="{{ url($posts->thumbnail) }}" alt="Post Image"></div>
                         <div class="post-info">
-                            <a class="btn category-btn" href="#">{{ $posts->category->name }}</a>
+                            <a class="btn category-btn" href="{{ url('post-detail/'.$posts->id) }}">{{ $posts->category->name }}</a>
                             <h5 class="title"><a href="{{ url('post-detail/'.$posts->id) }}"><b class="light-color">{{ substr($posts->title, 0, 30).(strlen($posts->title) > 30) ? "..." : "" }}</b></a></h5>
                             <h6 class="date"><em>{{ date('D, M Y', strtotime($posts->created_at)) }}</em></h6>
                             {!! substr($posts->content, 0, 30).(strlen($posts->content) > 30 ? "..." : "") !!}

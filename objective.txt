@@ -20,9 +20,9 @@ Landing Page (Public non Middleware)
 -Routing (DONE)
 -Controller (Portal,Comment,Message)
 -Public Comment (DONE)
--About (Kind of..?)
--Dynamic Menu
+-About (DONE)
+-Dynamic Menu (DONE)
 
 Database
--Set up account
--Configure .env
+-Set up account PhpMyadmin (DONE)
+-Configure .env (DONE)
