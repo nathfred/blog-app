@@ -26,7 +26,7 @@ class PortalController extends Controller
         foreach ($mainmenus1 as $menu) {
             $mainmenus2 = DB::table('mainmenus')->where('status', 1)->where('parent', $menu->id)->orderBy('order', 'asc')->get();
         }
-        // dd($mainmenus1);
+        // dd($mainmenus2);
 
         return view('portal.index', compact('data'));
     }

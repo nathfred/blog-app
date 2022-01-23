@@ -97,10 +97,3 @@
         </div><!-- row -->
     </div><!-- recomend-area -->
 @endsection
-
-
-
-						
-
-
-	

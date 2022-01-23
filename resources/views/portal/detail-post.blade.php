@@ -1,8 +1,6 @@
 @extends('portal.app')
 
 @section('sc-css')
-    {{-- <link href="{{ url('assets/portal/common-css/bootstrap.css') }}" rel="stylesheet">
-	<link href="{{ url('assets/portal/common-css/ionicons.css') }}" rel="stylesheet"> --}}
     <link rel="stylesheet" href="{{ url('assets/portal/02-Single-post/css/styles.css') }}">
     <link rel="stylesheet" href="{{ url('assets/portal/02-Single-post/css/responsive.css') }}">
 @endsection

@@ -14,13 +14,12 @@
 
 	<!-- Stylesheets -->
 	<link href="{{ url('assets/portal/common-css/bootstrap.css') }}" rel="stylesheet">
-	<link href="{{ url('assets/portal/common-css/bootstrap.css') }}" rel="stylesheet">
 	<link href="{{ url('assets/portal/common-css/ionicons.css') }}" rel="stylesheet">
 	<link href="{{ url('assets/portal/common-css/layerslider.css') }}" rel="stylesheet">
 	@yield('sc-css')
 
-	<link href="{{ url('assets/portal/01-homepage/css/styles.css') }}" rel="stylesheet">
-	<link href="{{ url('assets/portal/01-homepage/css/responsive.css') }}" rel="stylesheet">
+	{{-- <link href="{{ url('assets/portal/01-homepage/css/styles.css') }}" rel="stylesheet">
+	<link href="{{ url('assets/portal/01-homepage/css/responsive.css') }}" rel="stylesheet"> --}}
 </head>
 <body>
 	<header>
@@ -36,7 +35,7 @@
 						$data['mainmenu2'] = DB::table('mainmenus')->where('status',1)->where('parent',$menu->id)->orderBy('order','asc')->get();
 					@endphp	
 					@if (count($data['mainmenu2']) > 0)
-						<li class="drop-down"><a href="#!">Categories<i class="ion-ios-arrow-down"></i></a>
+						<li class="drop-down"><a href="#!">CATEGORIES<i class="ion-ios-arrow-down"></i></a>
 							<ul class="drop-down-menu">
 								@foreach ($data['mainmenu2'] as $menu2)
 									@if ($menu2->category == 'link')
@@ -155,7 +154,6 @@
 
 
 	<!-- SCIPTS -->
-	<script src="{{ url('assets/portal/common-js/jquery-3.1.1.min.js') }}"></script>
 	<script src="{{ url('assets/portal/common-js/jquery-3.1.1.min.js') }}"></script>
 	<script src="{{ url('assets/portal/common-js/tether.min.js') }}"></script>
 	<script src="{{ url('assets/portal/common-js/bootstrap.js') }}"></script>
